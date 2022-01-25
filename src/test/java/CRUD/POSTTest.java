@@ -1,9 +1,12 @@
+package CRUD;
+
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class POSTTest {
 
@@ -27,7 +30,7 @@ public class POSTTest {
                 .response();
 
         JsonPath json = response.jsonPath();
-        Assertions.assertEquals("101", json.get("userId").toString());
-        Assertions.assertEquals("testTitle", json.get("title"));
+        assertEquals("101", json.get("userId").toString());
+        assertEquals("testTitle", json.get("title"));
     }
 }
