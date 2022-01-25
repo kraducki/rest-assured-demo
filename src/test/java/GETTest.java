@@ -15,7 +15,7 @@ public class GETTest {
 
     // Simple GET Request without any assertion
     @Test
-    public void readAllProducts() {
+    public void readAllPosts() {
         given()
                 .when()
                 .get(BASE_URL + "/" + POSTS)
@@ -26,7 +26,7 @@ public class GETTest {
 
     // Simple GET Request with assertion
     @Test
-    public void readAllProductsWithResponseExtraction() {
+    public void readAllPostsWithResponseExtraction() {
         Response response = given()
                 .when()
                 .get(BASE_URL + "/" + POSTS)
@@ -43,7 +43,7 @@ public class GETTest {
 
     // Simple GET Request to read one title
     @Test
-    public void readOneProduct() {
+    public void readOnePost() {
 
         Response response = given()
                 .when()
@@ -54,14 +54,12 @@ public class GETTest {
                 .response();
 
         JsonPath json = response.jsonPath();
-        assertEquals("Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops", json.get("title"));
-        assertEquals("3.9", json.get("rating.rate").toString());
-
+        assertEquals("sunt aut facere repellat provident occaecati excepturi optio reprehenderit", json.get("title"));
     }
 
     // Path Variable
     @Test
-    public void readOneProductPathVariable() {
+    public void readOnePostPathVariable() {
         Response response = given()
                 .pathParams("id", 1)
                 .when()
@@ -72,12 +70,12 @@ public class GETTest {
                 .response();
 
         JsonPath json = response.jsonPath();
-        assertEquals("Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops", json.get("title"));
-        assertEquals("3.9", json.get("rating.rate").toString());
+        assertEquals("sunt aut facere repellat provident occaecati excepturi optio reprehenderit", json.get("title"));
     }
 
+    // Query Param
     @Test
-    public void readOneProductQueryParam() {
+    public void readOnePostQueryParam() {
         Response response = given()
                 .queryParam("title", "qui est esse")
                 .when()
