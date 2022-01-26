@@ -23,7 +23,7 @@ public class PUTPATCHTest {
 
     @BeforeEach
     public void runBeforeEveryTest() {
-        fakeTitle = faker.harryPotter().spell();
+        fakeTitle = faker.harryPotter().book();
         fakeBody = faker.gameOfThrones().quote();
     }
 

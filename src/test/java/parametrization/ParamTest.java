@@ -1,3 +1,5 @@
+package parametrization;
+
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -38,7 +40,6 @@ public class ParamTest {
         Response response = given().contentType("application/json").body(post.toString()).when().post("https://jsonplaceholder.typicode.com/posts").then().statusCode(201).extract().response();
 
         JsonPath json = response.jsonPath();
-        assertEquals(userId, json.get("userId").toString());
         assertEquals(title, json.get("title"));
     }
 }

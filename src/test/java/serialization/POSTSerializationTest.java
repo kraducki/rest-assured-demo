@@ -2,6 +2,7 @@ package serialization;
 
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import postData.Posts;
 
@@ -32,5 +33,15 @@ public class POSTSerializationTest {
 
         JsonPath json = response.jsonPath();
         assertEquals(post.getTitle(), json.get("title"));
+    }
+
+    @Test
+    public void readPost() {
+        Posts post = given()
+                .when()
+                .get("https://jsonplaceholder.typicode.com/posts/1")
+                .as(Posts.class);
+
+        assertEquals(post.getTitle(), "sunt aut facere repellat provident occaecati excepturi optio reprehenderit");
     }
 }
