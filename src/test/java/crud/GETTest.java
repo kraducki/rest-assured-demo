@@ -1,4 +1,4 @@
-package CRUD;
+package crud;
 
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -18,12 +18,18 @@ public class GETTest {
     // Simple GET Request without any assertion
     @Test
     public void readAllPosts() {
-        given()
+        Response response = given()
                 .when()
                 .get(BASE_URL + "/" + POSTS)
                 .then()
-                .statusCode(200);
+                .statusCode(200)
+                .extract()
+                .response();
 
+        // Print response's details
+        System.out.println(response.getTime());
+        System.out.println(response.getStatusCode());
+        System.out.println(response.getBody().asString());
     }
 
     // Simple GET Request with assertion

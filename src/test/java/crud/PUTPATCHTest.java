@@ -1,4 +1,4 @@
-package CRUD;
+package crud;
 
 import com.github.javafaker.Faker;
 import io.restassured.path.json.JsonPath;
